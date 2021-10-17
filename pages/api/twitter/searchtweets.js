@@ -1,21 +1,14 @@
 import Twitter from 'twitter-lite';
-import { getToken } from 'next-auth/jwt';
 
 export default async (req, res) => {
   const body = JSON.parse(req.body);
   const { q, result_type } = body;
   
-  const token = await getToken({
-    req,
-    secret: process.env.NEXTAUTH_SECRET
-  });
-  
   const client = new Twitter({
     subdomain: 'api',
     consumer_key: process.env.TWITTER_CONSUMER_KEY,
     consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
-    access_token_key: token.twitter.accessToken,
-    access_token_secret: token.twitter.refreshToken
+    bearer_token: process.env.TWITTER_BEARER_TOKEN
    });
 
   try {
