@@ -13,7 +13,7 @@ export default async (req, res) => {
 
   try {
     const results = await client.get('search/tweets', {
-      q,
+      q:`from:${q}`,
       result_type
     });
     return res.status(200).json({

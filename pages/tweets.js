@@ -8,7 +8,7 @@ const Tweets = ({ statuses }) => {
         {statuses && (
           <Stack direction="row" justify="center" spacing={4}>
             <ul>
-              {statuses.map(({ id, text, user }) => {
+              {statuses.map(({ id, text, user, created_at }) => {
                 return (
                   <li key={id} style={{ listStyleType: "none" }}>
                     <Box
